@@ -1,0 +1,23 @@
+<ion-view view-title="Photos">
+<ion-nav-buttons side="left">
+          <a nav-clear class="ion-home"  style="font-size: 33px; line-height:0; color:white" href="#/tab/events">
+        </a>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+          <img src="img/logo.png" class ="logo">
+</ion-nav-buttons>   
+  <ion-content style="padding-top:10px">
+  <div  ng-repeat="evenement in evenements">
+    <div class="item item-divider padding">
+          {{evenement.name}}
+    </div>
+          <div class="padding">
+      <ion class="item item-list-detail">
+          <ion-scroll direction="x">
+              <img  ng-src="{{photo.img}}" ng-repeat="photo in evenement.src" ng-click="showImages($index); affiche(evenement.name,evenement.affiche);" class="image-list-thumb">
+          </ion-scroll>
+      </ion>
+    </div>
+      </div>
+  </ion-content>
+</ion-view>

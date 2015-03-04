@@ -1,0 +1,24 @@
+<ion-view view-title="Liste">
+<ion-nav-buttons side="left">
+          <a nav-clear class="ion-home"  style="font-size: 33px; line-height:0; color:white" href="#/tab/events">
+        </a>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+          <img src="img/logo.png" class ="logo">
+</ion-nav-buttons>   
+  <ion-content style="padding-top:10px">
+   <div class="item item-divider">
+          La liste
+    </div>
+          <div class="padding">
+    <ion-list>
+      <ion-item class="item-avatar item-icon-right" ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.id}}">
+        <img ng-src="{{friend.face}}">
+        <h2>{{friend.poste}}</h2>
+        <h3>{{friend.name}}</h3>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </div>
+  </ion-content>
+</ion-view>

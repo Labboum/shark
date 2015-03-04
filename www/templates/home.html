@@ -1,0 +1,25 @@
+<ion-view view-title="Bienvenue">
+<ion-nav-buttons side="left">
+          <a nav-clear class="ion-home"  style="font-size: 33px; line-height:0; color:white" href="#tab/home">
+        </a>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+          <img src="/img/logo.png" class ="logo">
+</ion-nav-buttons>   
+    <ion-content >
+    <img  class="full-image" src="/img/equipe.png">
+    
+    <div class="item item-divider">
+          Evenement Soiree
+      </div>
+
+    <ion-list>
+      <ion-item class="item-avatar" ng-repeat="event in events" type="item-text-wrap" href="#/tab/home/0">
+        <img ng-src="{{event.img}}">
+        <h2>{{event0.name}}</h2>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
+

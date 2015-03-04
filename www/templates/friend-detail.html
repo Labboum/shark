@@ -1,0 +1,72 @@
+<!--
+This template loads for the 'tab.friend-detail' state (app.js)
+'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+The FriendsCtrl pulls data from the Friends service (service.js)
+The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{friend.poste}}">
+  <ion-content scroll="false">
+  <div class="tableau" style="background-image: url(img/equipe.png); background-size: 100% ; background-repeat:no-repeat;">
+   <img src='img/equipe.png' class="full-image">
+   <span ng-if="!friend.posteaf">
+   <div class="row" style="margin-top:-50%">
+   	<div class="col col-10" > </div> 
+  <div class="col col-20" >   
+  <img ng-src="{{friend.face}}" style="width: 64px; height: 64px; border:solid white 2px"></div>
+  <div class="col"><h2 style="color:white">{{friend.poste}}</h2>
+    <h3 style="color:white; overflow:display ;line-height:0">{{friend.surname}}</h3></div>
+</div></span>
+<span ng-if="friend.posteaf">
+<div class="row" style="margin-top:-50%">
+    <div class="col col-10" > </div> 
+  <div class="col col-20" >   
+  <img ng-src="{{friend.face}}" style="width: 64px; height: 64px; border:solid white 2px"></div>
+  <div class="col"><h2 style="color:white">{{friend.posteaf}}</h2>
+    <h3 style="color:white; overflow:display ;line-height:0">{{friend.surname}}</h3></div>
+</div>
+ </div>
+</span>
+<div class="has-header" style="padding-top:0">
+
+    	<div class="item item-divider">
+          Sport
+      </div>
+      <ioni class="item item-list-detail" style="padding-top:0;border: 0px;padding-bottom:0;padding:10px;background:#cedbde">
+              <div class="row" style="background:white">
+  <div class="col"><div class="row row-center">
+  <div class="col">{{friend.sport1}}</div></div></div>
+  <div class="col">
+          <ion style="font-size:40px"class="{{friend.ion1}}"></div>
+  <div class="col"><div class="row row-center">
+  <div class="col">{{friend.sport2}}</div></div></div>
+  <div class="col"><ion style="font-size:40px"class="{{friend.ion2}}"></div>
+</div>
+<span ng-if="friend.sport3">
+<div class="row" style="background:white">
+  <div class="col"><div class="row row-center">
+  <div class="col">{{friend.sport3}}</div></div></div>
+  <div class="col">
+          <ion style="font-size:40px"class="{{friend.ion3}}"></div>
+  <div class="col"><div class="row row-center">
+  <div class="col"></div></div></div>
+  <div class="col"></div>
+</div>
+</span>
+      </ioni>
+      <div class="item item-divider">
+          A Propos
+      </div>
+      <ion class="item item-list-detail" style="padding-top:0;padding-bottom:0;border: 0px;padding:10px;background:#cedbde">
+        <div class="row" style="background:white;padding-top:10px;padding-bottom:10px">
+        <p style="margin:auto; text-align:center; white-space:normal;">
+              {{friend.detail}}
+        </p>
+      </div>
+      </ion>
+</div>
+</div>
+<div class="item item-divider" style="height:1000px">
+          
+      </div>
+  </ion-content>
+</ion-view>

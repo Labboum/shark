@@ -1,0 +1,33 @@
+<ion-view view-title="Allô ?">
+<ion-nav-buttons side="left">
+          <a nav-clear class="ion-home"  style="font-size: 33px; line-height:0; color:white" href="#/tab/events">
+        </a>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+          <img src="img/logo.png" class ="logo">
+</ion-nav-buttons>   
+  <ion-content scroll="false" style="padding-top:10px">
+  <div class="item item-divider">
+          Voici les allos !
+    </div>
+          <div class="padding" style="height:100%; padding-bottom:44px;">
+      <ion class="item item-list-detail" style="height:100%">
+          <ion-slide-box delegate-handle="allo-viewer" does-continue="true" show-pager="true"  type="item-text-wrap">
+          <ion-slide ng-repeat="allo in allos">
+            <h1 style="color:#b01e1f; font-size:150%">{{allo.name}}</h1>
+            
+            <div class="row" style="margin-top:8%"><img  src="{{allo.img}}"  style="margin:auto; max-height:30%"></div>
+              <div class="row"><p style="margin:auto; white-space:normal;">{{allo.detail}}</p></div>
+              
+            
+              <a style="margin-top:8%" class="button icon-left ion-ios7-telephone button-dark button-outline" href="tel:{{allo.phone}}">Appelle nous</a>
+            <div id="logo">
+              <img src="">
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+      </ion>
+    </div>
+  </ion-view>
+</ion-content>
+</ion-view>

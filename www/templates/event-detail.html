@@ -1,0 +1,17 @@
+<ion-view view-title="{{event.name}}">
+  <ion-content>
+    <img ng-src="{{event.img}}" class="full-image">
+    <div class="item item-divider">
+          {{event.name}},
+          <br>{{event.date}}
+      </div>
+      <div class="has-header padding">
+      <ion class="item item-list-detail" style="margin:auto;">
+          <p style="margin:auto; white-space:normal;">
+      {{event.detail}}
+    </p>
+      </ion>
+  </div>
+    
+  </ion-content>
+</ion-view>
