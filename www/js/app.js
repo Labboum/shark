@@ -5,43 +5,33 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var localDB = new PouchDB("todos");
-var remoteDB = new PouchDB("http://0.0.0.0:5984/todos");
 
 
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','firebase',])
 
 .constant('appSettings', {
-  db: 'http://0.0.0.0:5984/evnements'
 })
 
-.factory('PouchDBListener', ['$rootScope', function($rootScope) {
+.factory('PouchDBListener', ['$rootScope', function($rootScope, $firebase) {
+
+
  
-    localDB.changes({
-        continuous: true,
-        onChange: function(change) {
-            if (!change.deleted) {
-                $rootScope.$apply(function() {
-                    localDB.get(change.id, function(err, doc) {
-                        $rootScope.$apply(function() {
-                            if (err) console.log(err);
-                            $rootScope.$broadcast('add', doc);
-                        })
-                    });
-                })
-            } else {
-                $rootScope.$apply(function() {
-                    $rootScope.$broadcast('delete', change.id);
-                });
-            }
-        }
-    });
- 
-    return true;
+        return true;
      
 }])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $firebase, $rootScope) {
+
+var ref = new Firebase("https://scorching-torch-7804.firebaseio.com/allos");
+var sync = $firebase(ref);
+
+var list = sync.$asObject();
+    list.$loaded().then(function() {
+      console.log("list has " + list.length + " item(s)");
+    });
+
+$rootScope.liste=list;
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

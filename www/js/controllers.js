@@ -1,8 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('AllosCtrl',function($scope, $timeout, $ionicSlideBoxDelegate, $firebase, Allos) {
+.controller('AllosCtrl',function($scope, $timeout, $ionicSlideBoxDelegate, $firebase, $rootScope ,Allos) {
   
 $scope.$on('$ionicView.beforeEnter', function(){
+  $scope.maman=$rootScope.liste;
   $ionicSlideBoxDelegate.$getByHandle('allo-viewer').update();
   $ionicSlideBoxDelegate.$getByHandle('allo-viewer').slide(0);
 });
@@ -11,6 +12,17 @@ $scope.$on('$ionicView.beforeEnter', function(){
 
 var ref = new Firebase("https://scorching-torch-7804.firebaseio.com/allos");
 var sync = $firebase(ref);
+
+var list = sync.$asObject();
+    list.$loaded().then(function() {
+      console.log("list has " + list.length + " item(s)");
+    });
+
+    // we can add it directly to $scope if we want to access this from the DOM
+    $scope.list = list;
+
+    $scope.maman=$rootScope.liste;
+
 $scope.data = sync.$asArray();
 
   $scope.allos = Allos.all();
@@ -44,49 +56,6 @@ $scope.data = sync.$asArray();
 })
 
 .controller('PhotosCtrl', function($scope, $ionicPopup, $ionicSlideBoxDelegate, $ionicModal,$http, $firebase, PouchDBListener, appSettings) {
-
-var ref = new Firebase("https://scorching-torch-7804.firebaseio.com/users");
-var sync = $firebase(ref);
-
-var syncObject = sync.$asObject();
-syncObject.$bindTo($scope, "data");
-
-
-
-
-
-
-
-
-console.log(appSettings);
-
-
-function getItems () {
-  $http.get(appSettings.db + '/f00c1d20ebad984df8bbbc998c00167e/name')
-    .success(function (data) {
-      $scope.items = data.rows;
-    });
-}
-getItems();
-
-$scope.todos = [];
-$scope.tests = [];
- 
-    
- 
-    $scope.$on('add', function(event, todo) {
-        $scope.todos.push(todo);
-    });
- 
-    $scope.$on('delete', function(event, id) {
-        for(var i = 0; i < $scope.todos.length; i++) {
-            if($scope.todos[i]._id === id) {
-                $scope.todos.splice(i, 1);
-            }
-        }
-    });
-
-
 
 
 
