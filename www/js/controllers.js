@@ -1,14 +1,19 @@
 angular.module('starter.controllers', [])
 
-.controller('AllosCtrl', function($scope, $timeout, $ionicSlideBoxDelegate, Allos) {
+.controller('AllosCtrl',function($scope, $timeout, $ionicSlideBoxDelegate, $firebase, Allos) {
   
 $scope.$on('$ionicView.beforeEnter', function(){
   $ionicSlideBoxDelegate.$getByHandle('allo-viewer').update();
   $ionicSlideBoxDelegate.$getByHandle('allo-viewer').slide(0);
 });
-  $scope.allos = Allos.all();
 
-Allos.data().$bindTo($scope, "data");
+
+
+var ref = new Firebase("https://scorching-torch-7804.firebaseio.com/allos");
+var sync = $firebase(ref);
+$scope.data = sync.$asArray();
+
+  $scope.allos = Allos.all();
 })
 
 .controller('ChatsCtrl', function($scope, $ionicSlideBoxDelegate, Chats) {

@@ -14,10 +14,10 @@
       <ion class="item item-list-detail" style="height:100%">
           <ion-slide-box delegate-handle="allo-viewer" does-continue="true" show-pager="true"  type="item-text-wrap">
           <ion-slide ng-repeat="allo in allos">
-            <h1 style="color:#b01e1f; font-size:150%">{{allo.name}}{{data.mchen.name}}</h1>
+            <h1 style="color:#b01e1f; font-size:150%">{{allo.name}}</h1>
             
             <div class="row" style="margin-top:8%"><img  src="{{allo.img}}"  style="margin:auto; max-height:30%"></div>
-              <div class="row"><p style="margin:auto; white-space:normal;">{{allo.detail}}</p></div>
+              <div class="row"><p style="margin:auto; white-space:normal;">{{data}}</p></div>
               
             
               <a style="margin-top:8%" class="button icon-left ion-ios7-telephone button-dark button-outline" href="tel:{{allo.phone}}">Appelle nous</a>

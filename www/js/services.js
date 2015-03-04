@@ -330,10 +330,7 @@ var events = [{
 
 .factory('Allos', function($firebase) {
 
-    var ref = new Firebase("https://scorching-torch-7804.firebaseio.com/allos");
-var sync = $firebase(ref);
-
-var syncObject = sync.$asObject();
+    
 
 
 var allos = [{
@@ -374,9 +371,6 @@ var allos = [{
     get: function(alloId) {
       // Simple index lookup
       return allos[alloId];
-    },
-    data:function(){
-        return syncObject;
     }
   }
 });
