@@ -9,7 +9,7 @@ var localDB = new PouchDB("todos");
 var remoteDB = new PouchDB("http://0.0.0.0:5984/todos");
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','firebase',])
 
 .constant('appSettings', {
   db: 'http://0.0.0.0:5984/evnements'

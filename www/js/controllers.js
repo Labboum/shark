@@ -7,6 +7,8 @@ $scope.$on('$ionicView.beforeEnter', function(){
   $ionicSlideBoxDelegate.$getByHandle('allo-viewer').slide(0);
 });
   $scope.allos = Allos.all();
+
+Allos.data().$bindTo($scope, "data");
 })
 
 .controller('ChatsCtrl', function($scope, $ionicSlideBoxDelegate, Chats) {
@@ -36,7 +38,19 @@ $scope.$on('$ionicView.beforeEnter', function(){
   $scope.event = Events.get($stateParams.eventId);
 })
 
-.controller('PhotosCtrl', function($scope, $ionicPopup, $ionicSlideBoxDelegate, $ionicModal,$http, PouchDBListener, appSettings) {
+.controller('PhotosCtrl', function($scope, $ionicPopup, $ionicSlideBoxDelegate, $ionicModal,$http, $firebase, PouchDBListener, appSettings) {
+
+var ref = new Firebase("https://scorching-torch-7804.firebaseio.com/users");
+var sync = $firebase(ref);
+
+var syncObject = sync.$asObject();
+syncObject.$bindTo($scope, "data");
+
+
+
+
+
+
 
 
 console.log(appSettings);
